@@ -1,0 +1,18 @@
+﻿@model TaskManagement.Models.Task
+
+@{
+    ViewData["Title"] = "Add New Task";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<form method="post">
+    <div class="mb-3">
+        <label for="Title" class="form-label">Task Title</label>
+        <input type="text" class="form-control" id="Title" name="Title" required>
+    </div>
+
+    <button type="submit" class="btn btn-success">Save Task</button>
+</form>
+
+<a href="@Url.Action("Index", "Task")" class="btn btn-secondary mt-3">Turn Back</a>

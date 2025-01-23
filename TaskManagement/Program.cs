@@ -1,7 +1,16 @@
+using TaskManagement.Registration;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Configuration.AddUserSecrets<Program>();
+
+builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
+
+builder.Services.AddServices(builder.Configuration);
+
 
 var app = builder.Build();
 
@@ -22,8 +31,9 @@ app.MapStaticAssets();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}")
+    pattern: "{controller=Task}/{action=Index}/{id?}")
     .WithStaticAssets();
+
 
 
 app.Run();
